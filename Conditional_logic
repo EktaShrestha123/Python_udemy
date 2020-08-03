@@ -1,0 +1,66 @@
+# conditional logic
+is_old= True
+is_licenced= True
+if is_old:
+  print('you are old enough to drive!')
+else:
+  print('you are out of age!')
+print('okokokok')
+
+
+#use of elif
+is_old= True
+is_licenced= True
+if is_old:
+  print('you are old enough to drive!')
+elif is_licenced:
+  print("you can drive now!")
+else:
+  print('you are out of age!')
+print('okokokok')
+
+
+#combine two statements
+is_old= True
+is_licenced= False
+if is_old and is_licenced:
+  print('you are able to drive!')
+else:
+  print('you are out of age!')
+print('okokokok')
+
+
+#Ternary Operator
+#condition_if_true if condition else condition_if_else
+is_friend=True
+can_message= "message allowed" if is_friend else "Not allowed"
+print(can_message)
+
+
+#Logical operator
+is_magician = False
+is_expert = True
+if is_magician and is_expert:
+  print(" you are a master magician ")
+elif is_magician and not is_expert:
+  print("at least you're getting there")
+elif not is_magician:
+  print("you need magic powers.")
+else:
+  print("do nothing")
+
+
+
+# is VS ==
+
+
+#For loops
+
+for item in "Zero to Hero  ":
+  print(item)
+
+for item in (1,2,3,4,5):
+  for x in ("a", "b","c"):
+    # print(item)
+    # print(x)
+    print(item, x)
