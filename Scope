@@ -1,0 +1,112 @@
+#Scope : What variables do I have access to?
+
+print(name()) # ERROR : no access , must be defined
+
+# total=100  GLOBAL scope of python
+
+
+#FUNCTION scope of python
+def some_func():
+  total=100
+# print(some_func(total))  GET an error because this total make it global scope
+  print(total) #functional scope
+some_func()
+
+#defines which variable is access to whom
+
+
+#SCOPE RULES
+a=1
+def confusion():
+  a=4 #local scope
+  return a
+print (confusion())
+print (a)
+
+
+
+a=1
+def parent ():
+  a=10 #Parent scope
+  def confusion():
+    return a
+  return confusion()
+print (parent())
+print (a)
+
+
+
+a=1 #Global Scope
+def confusion():
+  return a
+print (confusion())
+print (a)
+
+
+
+a=1
+def confusion():
+  return sum #built in function
+print (confusion())
+print (a)
+
+
+# #RULES:
+# 1. Start with local
+# 2. Parent local 
+# 3. Global
+# 4. Built in Python function
+
+
+
+#Global Keyword
+total =0
+def count():
+  global total
+  total += 1
+  return total
+count()
+count()
+print(count())
+
+
+#OR
+total = 0
+def count(total):
+  total += 1
+  return total
+count(total)
+count(total)
+print(count(total))
+
+
+
+total =0
+def count(total):
+  total += 1
+  return total
+print(count(count(count(total))))
+
+
+
+#NONLOCAL keyword
+def outer ():
+  x="local"
+  def inner():
+    nonlocal x
+    x= "nonlocal"
+    print("inner: ", x)
+  inner()
+  print("Outer: ",x)
+outer()
+
+
+def outer ():
+  x="local"
+  def inner():
+    # nonlocal x
+    x= "nonlocal"
+    print("inner: ", x)
+  inner()
+  print("Outer: ",x)
+outer()
