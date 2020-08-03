@@ -1,0 +1,194 @@
+#Functions
+
+def say_hello ():
+  print ("Helooooooo")
+say_hello()
+
+
+# parameters and Functions
+
+def say_hello( name, address):# Parameters
+  print(f"Hellooo, I am {name}. I live in {address}.")
+
+say_hello( "Ekta", "Boudha") #arguments
+
+
+
+#Default parameter and keyword argument
+def say_hello( name="Ram", address="Boudha"):#Default Parameters
+  print(f"Hellooo, I am {name}. I live in {address}.")
+
+#Positional Arguments
+say_hello( "sita", "Boudha")
+say_hello( "Ekta", "Boudha")
+say_hello( "hari", "Boudha")
+say_hello()
+
+#Keyword arguments
+say_hello( name="ak",address= "Boa") 
+say_hello()
+say_hello(name="durga")#address is not changed fron default parameter only name is changed
+
+#Return
+
+def sum(num1, num2):
+  print(num1+num2)
+sum(4,5)
+
+
+def sum(num1, num2):
+  return(num1+num2)
+print(sum(4,5))
+
+
+
+def sum(num1, num2):
+  return(num1+num2)
+
+total= sum(4,5)
+print(sum(4,total))
+ 
+
+
+def sum(num1, num2):
+  def another_func(n1,n2):
+    return n1+n2
+  return another_func(num1,num2)
+total= sum(8,7)
+print(total)
+
+
+
+# TESLA
+def checkDriverAge(age=0):
+  
+  if int(age) < 18:
+    return("Sorry, you are too young to drive this car. Powering off")
+  elif int(age) > 18:
+    return("Powering On. Enjoy the ride!");
+  elif int(age) == 18:
+    return("Congratulations on your first year of driving. Enjoy the ride!")
+print(checkDriverAge(92))
+print(checkDriverAge( ))
+
+#1. Wrap the above code in a function called checkDriverAge(). Whenever you call this function, you will get prompted for age. 
+# Notice the benefit in having checkDriverAge() instead of copying and pasting the function everytime?
+
+#2 Instead of using the input(). Now, make the checkDriverAge() function accept an argument of age, so that if you enter:
+#checkDriverAge(92);
+#it returns "Powering On. Enjoy the ride!"
+#also make it so that the default age is set to 0 if no argument is given.
+
+
+
+# METHOD vs FUNCTIONS
+
+#method haru dot jodera aaucha eg: "hello".capitalize()
+#function haru chai max(), min(),print() etc
+
+
+
+
+# DOCSTRING : useful to add comments or defination to your function
+def test (a): 
+  '''
+  Info: this function tests and prints param a
+
+  '''
+  print(a)
+test('!!!!')
+help(test)
+print(test.__doc__)
+
+
+
+#CLEAN CODE
+
+def is_even(num):
+  if num % 2 == 0:
+    return True
+  elif num % 2 != 0:
+    return False
+print(is_even(34))
+
+
+#cleaner version
+def is_even(num):
+  if num % 2 == 0:
+    return True
+  else:
+    return False
+print(is_even(34))
+
+
+#even cleaner : return access function automatically so else is not require
+def is_even(num):
+  if num % 2 == 0:
+    return True
+  return False
+print(is_even(33))
+
+
+#CLEAN
+def is_even(num):
+  return num % 2 == 0
+  
+print(is_even(34))
+
+
+
+#*args and *kwargs
+def super_func(args): #args as a parameter
+  return sum(args)
+super_func(1,1,2,3)  #ERROR: super_func takes one positional argument but 4 are given
+
+
+
+def super_func(*args): #takes any number of parameters
+  print(args)
+  return sum(args)
+  
+print(super_func(1,1,2,3))
+
+
+def super_func(*args, **kwargs): #takes any number of parameters
+  print(kwargs)
+  return sum(args)
+  
+print(super_func(1,1,2,3, num1=2, num2=3))
+
+
+
+def super_func(*args, **kwargs): #takes any number of parameters
+  total=0
+  for items in kwargs.values():
+    total+= items
+  return sum(args)+total
+  
+print(super_func(1,1,2,3, num1=2, num2=3))
+
+
+#RULE: params, *args, default parameters, **kwargs
+
+EXERCISE:: To print highest even number from the list
+
+def highest_even (li):
+  evens= []
+  for items in li:
+    if items%2==0:
+      evens.append(items)
+  return max(evens) ::: must be outside of loop , loop vitra bhayo bhane evens list banaune bela jati cha first ma tesbatai print huncha ,
+  2 first ma cha bhane 2 nai print huncha which causes an error
+  
+print(highest_even([2,12,3,4,5])
+
+
+
+
+
+
+
+
+
+
+
