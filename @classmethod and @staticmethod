@@ -1,0 +1,67 @@
+class PlayerCharacter:
+  membership = True
+  def __init__ (self, name, age):
+    self.name= name
+    self.age=age
+  
+  def shout(self):
+
+    print(f" Hello, {self.name}")
+  
+  @classmethod
+  def adding_things(cls, num1, num2):
+    return num1 + num2
+  
+player1= PlayerCharacter("Ekta", 22)
+#print(PlayerCharacter.adding_things(3,4))
+print(player1.adding_things(3,4))
+
+
+#cls 
+
+class PlayerCharacter:
+  membership = True
+  def __init__ (self, name, age):
+    self.name= name
+    self.age=age
+  
+  def shout(self):
+
+    print(f" Hello, {self.name}")
+  
+  @classmethod
+  def adding_things(cls, num1, num2):
+    return cls("Ekta", num1 + num2)#cls are used to instantiate 
+
+  
+player1= PlayerCharacter.adding_things(5, 22)
+#print(PlayerCharacter.adding_things(3,4))
+print(player1.age)
+
+
+
+
+#Static Method
+
+class PlayerCharacter:
+  membership = True
+  def __init__ (self, name, age):
+    self.name= name
+    self.age=age
+  
+  def shout(self):
+
+    print(f" Hello, {self.name}")
+  
+  @classmethod
+  def adding_things(cls, num1, num2):
+    return cls("Ekta", num1 + num2)#cls are used to instantiate 
+
+  @classmethod
+  def adding_things(cls, num1, num2):
+    return cls("Ekta", num1 + num2)#cls are used to instantiate 
+
+  
+player1= PlayerCharacter.adding_things(5, 22)
+#print(PlayerCharacter.adding_things(3,4))
+print(player1.age)
