@@ -1,0 +1,152 @@
+class PlayerCharacter:
+  def __init__(self, name): #self refers to player character which makes an object player1,  # construtor or init method
+    self.name=name #attributes
+  
+  
+  def run(self): #method
+    print("run") # if no return then gives None So, 
+    return"done"
+                
+
+
+player1= PlayerCharacter("Ekta") #Instantiate  and provide value of name or wahtever it is after self in the bracket 
+player2= PlayerCharacter("TOM")
+player2.attack=56
+
+print(player1.name)
+print(player2)
+print(player2.attack)
+#print(player1.attack) ERROR as object has no attribute as attack
+print(player1.run)
+print(player1.run())
+
+
+
+
+class PlayerCharacter:
+  def __init__(self, name, age): 
+    self.name=name #attributes
+    self.age= age
+  
+  
+  def run(self):
+    print("run")
+
+player1= PlayerCharacter("Ekta", 12) 
+player2= PlayerCharacter("TOM", 45)
+
+print(player1.name)
+print(player2.age)
+print(player2)
+
+
+
+
+#Attributes and Methods
+
+class PlayerCharacter:
+  #Class Object Attributes
+  membership= True #is static
+  def __init__(self, name, age): 
+
+    if(self.membership): #if(PlayerCharacter.membership)
+      self.name=name #attributes
+      self.age= age
+  
+  
+  # def run(self):
+  #   print("run")
+
+  def shout(self):
+    print(f" My name is {self.name}")
+    # print(f" My name is {PlayerCharacter.name}") ERROR name is not Class object attribute but is defined in constructor function
+
+  def result(self, address):
+    print(f" My name is {self.name}")
+
+
+
+player1= PlayerCharacter("Ekta", 12) 
+player2= PlayerCharacter("TOM", 45)
+player2.attack= 67
+
+print(player1.name)
+print(player2.age)
+print(player2.attack)
+print(player1.membership)
+print(player1.shout())
+
+print(player1.result(67))
+
+
+
+
+# __init__  : it is called whenever we instantiate an object
+
+class PlayerCharacter:
+ 
+  membership= True
+  def __init__(self, name, age): 
+
+    if(age > 23):
+      self.name=name 
+      self.age= age
+  
+
+  def shout(self):
+    print(f" My name is {self.name}")
+    
+  def result(self, address):
+    print(f" My name is {self.name}")
+
+
+
+player1= PlayerCharacter("Ekta", 12) 
+player2= PlayerCharacter("TOM", 45)
+player2.attack= 67
+
+
+print(player2.age)
+print(player2.attack)
+print(player1.membership)
+print(player1.shout()) # ERROR because player1 is not instatiated so cannot come upto method shout
+
+
+
+
+#Exercise
+
+#Given the below class:
+class Cat:
+    species = 'mammal'
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+# 1 Instantiate the Cat object with 3 cats
+cat1= Cat("baby", 9)
+cat2= Cat("fuchi", 13)
+cat3= Cat("miku", 2)
+
+
+# 2 Create a function that finds the oldest cat
+def oldest(*self):
+  if (cat1.age > cat2.age and cat1.age> cat3.age):
+    return("cat1 is oldest")
+  elif (cat2.age > cat1.age and cat2.age > cat3.age):
+    return("cat2 is oldest")
+  else:
+    return("cat3 is oldest")
+print (oldest())
+
+
+#OR
+def oldest(*args):
+  return max(args)
+
+
+
+# 3 Print out: "The oldest cat is x years old.". x will be the oldest cat age by using the function in #2
+print(f"the oldest cat is {max(cat1.age, cat2.age, cat3.age)} years old.")
+print(f"the oldest cat is {oldest(cat1.age, cat2.age, cat3.age)} years old.")
