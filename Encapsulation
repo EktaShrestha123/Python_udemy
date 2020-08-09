@@ -1,0 +1,33 @@
+class PlayerCharacter:
+  def __init__ (self, name, age):
+    self.name=name
+    self.age=age
+  
+  def run(self):
+    print("run")
+  
+  def shout(self):
+    print(f"My name is {self.name} anad age is {self.age}")
+  
+player1 = PlayerCharacter ("Ekta", 3)
+player1.shout()
+
+
+# The defined attributes and methods encapsulates the class or by encapsulating, it has been pacakaged up as a blueprint which gives extra power to playercharacter
+
+# If it doesnot have any methods but only attributes, it becomes like dictionary and defing class becomes useless
+
+# With class
+class PlayerCharacter:
+  def __init__ (self, name, age):
+    self.name=name
+    self.age=age
+player1 = PlayerCharacter ("Ekta", 3)
+print(player1.name)
+print(player1.age)
+
+
+#With dictionary
+player2={"name":"Ekta", "age":23}
+print(player2['name'])
+print(player2['age'])
