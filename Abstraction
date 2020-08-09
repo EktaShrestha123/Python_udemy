@@ -1,0 +1,52 @@
+# Abstraction :  It hides indormation and provide access to  only necessary
+
+
+class PlayerCharacter:
+  def __init__ (self, name, age):
+    self.name=name
+    self.age=age
+  
+  def run(self):
+    print("run")
+  
+  def shout(self):
+    print(f"My name is {self.name} anad age is {self.age}")
+  
+player1 = PlayerCharacter ("Ekta", 3)
+player1.shout() # this explains that player1 has acess to shout method but dont have concern with how it is accessed or coded or other related information
+
+# Suppose if we write it as :
+
+player1.name= "!!!"
+player1.shout="Booo"
+
+#print(player1.run()) ERROR
+
+print(player1.shout) #gets overwrite
+
+# This is the false concept as anybody at any time can change or overwrite it. So it is not good method
+
+
+
+# Public VS Private Variables
+
+# In python, there is no specific thing as private variable  but python programmers use underscore(_) if they want to declare a variable as private. Whenever we see "_" , it means pleasee dont touch this variable
+
+class PlayerCharacter:
+  def __init__ (self, name, age):
+    self._name=name
+    self._age=age
+  
+  def run(self):
+    print("run")
+  
+  def shout(self):
+    print(f"My name is {self._name} anad age is {self._age}")
+  
+player1 = PlayerCharacter ("Ekta", 3)
+player1.name= "@!@"
+player1.shout= "Boo"
+# print(player1.shout()) # if we overwite then its no longer method so we get an error
+print(player1.shout) 
+
+
