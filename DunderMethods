@@ -1,0 +1,51 @@
+# DUnder methods
+
+
+class Toy():
+  def __init__(self, name, age):
+    self.name=name
+    self.age=age
+    self.my_dict={
+      "has_book": True
+
+    }
+  
+  def __str__(self):
+    return f"{self.name}"
+
+  def __len__(self):
+    return 5
+
+  # def __del__(self):
+  #   print ("deleted!")
+
+  def __call__(self):
+    return ("yesss?")
+
+  def __getitem__(self, i):
+    return self.my_dict[i]
+
+action_figure= Toy("EKta",34)
+#print(action_figure.__str_)
+# print(action_figure.__str_()) #__str__ method is replaced
+
+print(str(action_figure))
+print(len(action_figure))
+# del(action_figure)
+print(action_figure())
+print(action_figure["has_book"])
+
+
+  
+#Exercise: Extending List
+
+class SuperList(list):
+  def __len__(self):
+    return 1000
+
+super_list1 = SuperList();
+
+print(len(super_list1))
+super_list1.append(5)
+print(super_list1[0])
+print(issubclass(list, object))
