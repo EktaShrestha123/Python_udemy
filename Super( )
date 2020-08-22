@@ -1,0 +1,27 @@
+# Super()
+
+class User():
+  def __init__ (self, email):
+    self.email=email
+  
+  def sign_in (self):
+    print("Logged in")
+
+class Wizard(User):
+  def __init__(self, name, power, email):
+    #User.__init__(self, email)
+    super().__init__(email)
+    self.name=name
+    self.power=power
+
+  def attack(self):
+    print(f"attacking with the power of {self.power}")
+    
+wizard1= Wizard("Merlin", 34, "merlin@gmail.com")
+print(wizard1.email)
+
+
+#Object introseption : ability to determine type of object at runtime
+
+wizard1= Wizard("Merlin", 34, "merlin@gmail.com")
+print(dir(wizard1))
