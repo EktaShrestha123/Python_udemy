@@ -1,0 +1,62 @@
+#Lambda expression:  one time anonymous functin that we dont need more than once   
+#used only to that function that is used once
+
+my_list= [1,2,3,4]
+
+print(list(map(lambda item: item*2,my_list)))
+print(list(filter(lambda item: item%2!=0 ,my_list)))
+# print(reduce(lambda acc,item: acc+item, my_list))
+
+print(my_list)
+
+
+
+#Exercise : Lambda expression
+
+my_list= [5,4,3]
+print(list(map(lambda item: item**2, my_list)))
+
+
+# to sort in terms of 2nd item
+
+a=[(0,1), (1,0),(10,-1), (3,6)]
+a.sort(key= lambda x: x[1])
+print(a)
+
+
+
+
+# Set and Dictionary Comprehensions
+my_list1= {num**2 for num in range(0,100) if num%2==0}
+print(my_list1)
+
+
+#Dictionary Comprehensions
+simple_dict={
+  "a":1,
+  "b":2
+}
+my_dict={ key:value**2 for key, value in simple_dict.items() if value%2==0}
+print(my_dict)
+
+
+#number is eky and its value is multiplied by 2
+my_dict={num:num**2 for num in [1,2,3]}
+print(my_dict)
+
+
+
+#Exercise: Comprehension
+
+some_list=['a','b','c','b','c', 'n','n']
+
+duplicate= [x for x in some_list if some_list.count(x)>1]
+print(duplicate)
+
+#to remove duplicate and print only one value , convert into set
+duplicate= set([x for x in some_list if some_list.count(x)>1])
+print(duplicate)
+
+#then convert into list
+duplicate= list(set([x for x in some_list if some_list.count(x)>1]))
+print(duplicate)
