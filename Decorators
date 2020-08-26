@@ -1,0 +1,120 @@
+# High order functions: function that accepts another function in its parameter, returns a function
+
+
+# def greet(func):
+#   func()
+
+# def greet1():
+#   def g():
+#     return 5
+#   return func
+
+
+#map(), fiilter(), reduce() are higher order fucntions
+
+
+#Decorators: ability of functions to act like a variable OR decorater supercharges functions
+
+def hello():
+  return("helllooooo")
+
+great=hello()
+del hello # it deletes hello function in actual but since great still ponts hello function it is discarded 
+print(great)
+
+
+# Another way
+def hello(func):
+  func()
+
+def greet():
+  print("helooooooooooooooo")
+
+a= hello(greet)
+print(a)
+
+
+#Decorator 2
+
+def my_decorator(func):
+  def wrap_func():
+    print("***********")
+    func()
+    print("**********")
+  return wrap_func
+
+@my_decorator
+def hello():
+  print("helooooooooo")
+
+# my_decorator(hello)()
+# hello1= my_decorator(hello)
+# hello1()
+
+@my_decorator
+def bye():
+   print("see you")
+
+hello()
+bye()
+
+
+
+#Decorator 3
+def my_decorator(func):
+  def wrap_func(x,y): # def wrap_func(*args,**kwargs)
+    print("***********")
+    func(x,y) # func(*args,**kwargs)
+    print("**********")
+  return wrap_func
+
+@my_decorator
+def hello(greeting, emoji): #def hello(greeting, emoji= sad):
+
+  print(greeting, emoji)
+
+hello('hiiii',"sad")
+
+
+
+
+# EXERCISE 1
+
+from time import time
+def performance(func):
+  def wrapper(*args, **kwargs):
+    t1= time()
+    result= func(*args, **kwargs)
+    t2=time()
+    print(f"took {t2-t1} s")
+    return result
+  return wrapper
+
+@performance 
+def long_time():
+  for i in range(10000):
+    i*5
+
+long_time()
+
+
+#EXCERSISE 2
+
+# Create an @authenticated decorator that only allows the function to run is user1 has 'valid' set to True:
+user1 = {
+    'name': 'Sorna',
+    'valid': True #changing this will either run or not run the message_friends function.
+}
+
+def authenticated(fn):
+  def wrapper(*args, **kwargs):
+      if args[0]['valid']:
+        return fn(*args, **kwargs)
+  return wrapper
+
+@authenticated
+def message_friends(user):
+    print('message has been sent')
+
+message_friends(user1)
+
