@@ -1,0 +1,126 @@
+#Generators
+# Generators are iterable but iterable are not generators
+# generator is the subset of iterable 
+
+
+# def make_list(num):
+#   result=[]
+#   for i in range(num): 
+#     result.append(i*2)
+#   return result
+
+def generator_function (num):
+  for i in range(num):
+    yield i*2
+
+for item in generator_function(1000):
+  print(item)
+
+#yield pauses the function and when you tell me to keep going again the i will go on
+
+#yied pauses function and comes back to it when next is called
+def generator_function (num):
+  for i in range(num):
+    yield i*2
+
+g= generator_function(100)
+next(g)
+next(g)
+print(next(g))
+
+
+
+# Generators Performance
+from time import time
+def performance(func):
+  def wrapper(*args, **kwargs):
+    t1= time()
+    result= func(*args, **kwargs)
+    t2=time()
+    print(f"took {t2-t1} s")
+    return result
+  return wrapper
+
+@performance 
+def long_time():
+  print("1")
+  for i in range(100000): #it's perormance is faster
+    i*5
+
+@performance 
+def long_time1():
+  print("2")
+  for i in list(range(100000)):
+    i*5
+
+long_time()
+long_time1()
+
+
+# Under the hood of generators
+
+# Implementing our own Loop
+def special_for(iterable):
+    iterator= iter(iterable)
+    while True:
+      try:
+        print(iterator)
+        print(next(iterator))
+      except StopIteration:
+        break
+special_for([1,2,3])
+
+
+#Range function 
+class MyGen():
+  current = 0
+  def __init__(self, first, last):
+    self.first=first
+    self.last=last
+  
+  def __iter__(self):
+    return self
+
+  def __next__(self):
+    if MyGen.current < self.last:
+      num = MyGen.current
+      MyGen.current += 1
+      return num
+    raise StopIteration
+
+gen = MyGen(0,100)
+for item in gen:
+  print(item)
+
+
+
+#EXERCISE : Fibonacci Numbers
+
+#Using Generator 
+
+def fib_number(num):
+  a=0
+  b=1
+  for i in range(num):
+    yield a
+    temp=a
+    a=b
+    b= b+temp
+
+for item in fib_number(20):
+  print(item)
+
+
+#Using List
+def make_list(num):
+  a=0
+  b=1
+  result=[]
+  for i in range(num): 
+    result.append(a)
+    temp=a
+    a=b
+    b=b+temp
+
+  return result
+print (make_list(20))
