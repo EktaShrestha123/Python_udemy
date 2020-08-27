@@ -1,0 +1,106 @@
+# Error Handling
+
+age= input("Enter your age... ") # It accceps character as well
+print (age)
+
+#Can be haldled like this
+age= int(input("Enter your age... ")) # Still we see an error
+print (age)
+
+# Use try and Except
+try:
+  age= int(input("Enter your age... "))
+  print (age)
+except:
+  print(" Please enter the number!")
+
+#this stops the program right there but we want the program keep running until we get right Value
+
+
+while True:
+  try:
+    age= int(input("Enter your age... "))
+    print (age) # if its 100/age then even if we enter number i.e 0 we get an error
+  except: #if there is an error, print this
+    print("Please enter the number!")
+  else:
+    print("You are done!!!")
+    break
+
+
+
+while True:
+  try:
+    age= int(input("Enter your age... "))
+    100/age
+  except ValueError: 
+    print("Please enter the number!")
+  except ZeroDivisionError: 
+    print("Please enter the number greater than zero!")
+  else:
+    print("You are done!!!")
+    break
+
+
+
+def sun(num1, num2):
+  try:
+    return num1+num2
+  except TypeError: #except TypeError as err:
+    print("Enter a number") #print("Enter a number"+ err) in order to print an error
+    #print(f"please enter a number {err}")
+
+print(sun(1,3))
+
+
+
+#handle multiple errors at the same time
+
+def divide(num1, num2):
+  try:
+    return num1/num2
+  except (TypeError, ZeroDivisionError): #except (TypeError, ZeroDivisionError) as err: print(err) 
+    print("Enter a number") 
+
+print(divide(1,0))
+
+
+
+#EXERCISE
+
+while True:
+  try:
+    age= int(input("Enter your age... "))
+    100/age
+  except ValueError: 
+    print("Please enter the number!")
+    continue
+  except ZeroDivisionError: 
+    print("Please enter the number greater than zero!")
+    break
+  else:
+    print("You are done!!!")
+    break
+  finally:
+    print("finally, you are done here") #finally runs regardlessly anytime
+
+
+
+#Error handling 3
+
+while True:
+  try:
+    age= int(input("Enter your age... "))
+    100/age
+    raise Exception ("Hey, cut it out!") #able to throw our own error
+
+ 
+  except ZeroDivisionError: 
+    print("Please enter the number greater than zero!")
+    break
+  else:
+    print("You are done!!!")
+    break
+  finally:
+    print("finally, you are done here") #finally runs regardlessly anytime
+
