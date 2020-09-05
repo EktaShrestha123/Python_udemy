@@ -1,0 +1,229 @@
+In main.py
+
+
+
+# In main.py 
+
+#modules in python
+# 1.
+
+import utility
+import shopping.shopping_cart
+
+
+print(utility)
+print(utility.multiply(3,4))
+
+print(shopping.shopping_cart.buy("apple"))
+
+
+
+
+#Different ways to import
+#2. 
+
+from utility import multiply, divide
+
+from shopping.shopping_cart import buy
+
+print(utility)
+print(multiply(3,4))
+print(divide(3,4))
+
+print(buy("apple"))
+
+
+
+#3. 
+
+from shopping import shopping_cart
+print(shopping_cart.buy("apple"))
+
+
+
+#__name__
+
+from utility import multiply, divide
+
+from shopping.shopping_cart import buy
+
+if __name__== "__main__" :
+
+  print(utility)
+  print(multiply(3,4))
+  print(divide(3,4))
+
+  print(buy("apple"))
+
+
+
+
+#python built-in modules
+# Built-in function
+
+import random
+print(random)
+
+help(random)
+print(dir(random))
+
+print(random.random)
+print(random.randint(1, 10)) #random parameter between 1 and 10
+print(random.choice([1,2,3,4,5]))
+
+# to shuffle
+ 
+my_list=[1,2,3,4,5]
+random.shuffle(my_list)
+print(my_list)
+
+# OR (random)
+
+from random import shuffle
+my_list=[1,2,3,4,5]
+shuffle(my_list)
+print(my_list)
+
+
+
+#sys built-in funcion
+#in main.py
+import sys
+sys.argv  #existing file terminal bata run garna milcha by typing python 3 filename.py
+
+#filename.py
+# import sys
+# first=sys.argv[1]
+# second=sys.argv[2]
+# print(f"Hello {first}! I am from {second}") #terminal ma: python 3 filename.py ekta boudha i.e  provide parameters
+
+
+
+
+
+#USEFUL MODULES
+
+# 1. Collection
+
+from collections import Counter, defaultdict, OrderedDict
+
+#Counter: counts the number it exists
+li=[1,2,3,4,5,6,5,6,7]
+print(Counter(li))
+sentence="blah blah blah !! thinking about python"
+print(Counter(sentence))
+
+
+# defaultdict: provides default value if something doesnt existing
+
+#dictionary= defaultdict(lambda: 'doesnt exist', #default value
+dictionary= defaultdict(lambda: 5, #default value
+{"a":1, "b":2})
+print(dictionary['c'])
+
+
+# Ordered dictionary: order ma huna parcha
+
+d= OrderedDict()
+d['a']=1
+d['b']=2
+
+d2= OrderedDict()
+d2['b']=2
+d2['a']=1
+
+print(d2==d)
+
+
+
+#2. Date and time
+import datetime
+print(datetime.time(5,45,2))
+print(datetime.date.today())
+
+
+# 3. Array
+from array import array
+
+arr= array('i', [1,2,3,4]) # i= typecode
+print(arr[1])
+
+
+
+
+
+#utility.py
+
+print(__name__)
+
+def multiply(num1, num2):
+  return num1*num2
+
+def divide(num1, num2):
+  return num1/num2
+
+
+
+
+# Shopping_cart.py
+
+print(__name__)
+def buy(item):
+  cart= []
+  cart.append(item)
+  return cart
+  
+  
+ 
+ # Randomgame.py
+ 
+ # generate random number 1-10
+from random import randint
+# import sys
+
+answer=randint(1,10)
+# answer = randint(int(sys.argv[0]), int(sys.argv[1]))
+# user can provide their own range in terminal : python3 ilename.py range+_start range_end
+
+# input from user
+
+# check that input is a number 1-10
+while True:
+    try:
+        print(answer)
+        guess = int(input("guess a number 1- 10:::: "))
+        # if int(guess)>0 and int(guess)<11:
+        if 0 < guess < 10:
+            if guess == answer:
+                print("you are genius")
+                break
+
+        else:
+            print("sorry")
+
+    except ValueError:
+        print("please enter a number")
+        continue
+# check if the number is the right guess otherwise
+# ask again
+
+
+
+
+
+#pyjokes_use.py
+
+
+#pyjokes_use.py 
+
+import pyjokes
+joke= pyjokes.get_joke("en", "neutral")
+print(joke)
+
+#helps installing pacakages of differen version in same devic and use the only needed version : pipenv
+
+  
+ 
+
+
+
