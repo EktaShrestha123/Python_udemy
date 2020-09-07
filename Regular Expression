@@ -1,0 +1,79 @@
+import re
+
+string="Search for this string."
+print('this' in string)
+
+
+# Use of re
+
+import re
+string="Search for this string."
+print(re.search('this',string))
+
+a= re.search('this',string)
+print(a.start())
+print(a.end())
+print(a.span())
+print(a.group())
+
+
+# can use concept of pattern: saerch garnu parne kura we write in patttern
+import re
+pattern= re.compile('this')
+string="this is a search for this string."
+a=pattern.search(string)
+b= pattern.findall(string)
+c=pattern.fullmatch(string) # exact string huna parcha
+d=pattern.match(string) # match bhako haru print gardincha
+e=pattern.split(string)
+print(a.group())
+print(b)
+print(c)
+print(d)
+
+
+
+import re
+pattern= re.compile(r'([a-zA-Z]).([a])')
+string="this is a search for this string."
+a=pattern.search(string)
+print(a.group())
+print(a.group(1))
+print(a.group(2))
+
+
+
+
+
+#Email Validation
+
+# 1. Search "python email validation regex" and copy "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+#2. paste it in regex101.com 
+
+import re
+pattern= re.compile( r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+# None: string="this is a search for this string."
+string="ektashrestha@yahoo.com"
+a=pattern.search(string)
+print(a)
+
+
+
+#Password Validation
+
+#RUles: 
+# At least 8 character long
+# COntains any sort of letters, numbers, $%#@
+# ends with number
+
+import re
+pattern= re.compile( r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+pattern1= re.compile(r"[A-Za-z0-9$%#@]{8,}\d")
+
+string="ektashrestha@yahoo.com"
+password= 'dfhe244%432f4'
+a=pattern.search(string)
+b=pattern1.fullmatch(password)
+
+print(a)
+print(b)
