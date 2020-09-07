@@ -1,0 +1,131 @@
+# write a program in script.py and run using terminal: python3 script.py 
+my_file= open('test.txt')
+print(my_file.read())
+my_file.seek(0) # In order to read content specified times
+
+print(my_file.read())
+my_file.seek(0)
+
+print(my_file.read())
+my_file.seek(0)
+
+
+
+print(my_file.readline()) # only reads one/first line
+
+print(my_file.readlines()) #reads multiple lines , outputs as a list
+my_file.close()
+
+
+
+
+
+#Read Write Append
+
+my_file= open('test.txt')
+print(my_file.read())
+my_file.seek(0) # In order to read content specified times
+
+print(my_file.read())
+my_file.seek(0)
+
+print(my_file.read())
+my_file.seek(0)
+
+
+
+print(my_file.readline()) # only reads one/first line
+
+print(my_file.readlines()) #reads multiple lines , outputs as a list
+my_file.close()
+
+
+#Standard way to read a file , without close
+
+with open('test.txt')as my_file:
+	print(my_file.readlines())
+
+# read : mode= 'r' , mode rakhena bhane automatically read nai huncha
+# write : mode= 'w'
+# both: mode='r+'
+# append: "a"
+
+
+# In order to read and write a file
+
+with open("test.txt", mode='r+') as my_file:
+	text= my_file.write(":)") # existing file ma if we try to write, first ko index dhekhi overwrite huan thalcha
+	print(text)
+
+
+# Use of append in order to write or add text at last not from first index
+
+with open("test.txt", mode='a') as my_file:
+	text= my_file.write(":)") 
+	print(text)
+
+
+with open("test.txt", mode='w') as my_file:
+	text= my_file.write(":)")  # assumes as a new file
+	print(text)
+
+
+#to create file that doesnot exists
+
+# read garda error aaucha as file doesnot exists
+# write garda naya file bancha ani text write huncha
+
+with open("sad.txt", mode='w') as my_file:
+	text= my_file.write(":)")  # assumes as a new file
+	print(text)
+
+
+
+
+# File path: accessing files located in different locations
+
+try:
+
+	# with open('./python/sad.txt', mode='r')as my_file:
+	with open('sad.txt', mode='r')as my_file:  #access inside some folder
+		print(my_file.read())
+except FileNotFoundError as err:
+ 	print('file doesnot exist')
+ 	raise err
+except IOError as err:
+ 	print('IO error')
+ 	raise err
+
+
+# Exercise
+# To Translate English text to Nepali
+
+# from translate import Translator
+# translator= Translator(to_lang="zh")
+
+from translate import Translator
+translator= Translator(to_lang="ja")
+try:
+	with open('./test.txt', mode='r') as my_file:
+		text= my_file.read()
+		translation = translator.translate(text)
+		print(translation)
+
+except FileNotFoundError as e:
+	print('check your file path silly!')
+
+
+
+
+from translate import Translator
+translator= Translator(to_lang="ja")
+
+try:
+	with open('./test.txt', mode='r') as my_file:
+		text= my_file.read()
+		translation = translator.translate(text)
+		with open('./test-ja.txt', mode='w') as my_file1:
+			my_file1.write(translation)
+
+except FileNotFoundError as e:
+	print('check your file path silly!') 
