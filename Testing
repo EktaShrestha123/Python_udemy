@@ -1,0 +1,160 @@
+# Main.py
+
+
+ef do_stuff(num):
+	return num + 5 
+
+#to catch type error
+def do_stuff(num):
+	return int(num + 5) 
+
+#OR
+def do_stuff(num):
+	try:
+
+		return int(num + 5)
+	except ValueError as err: 
+		return err  
+
+
+def do_stuff(num=0 ):
+	try:
+		if num:
+			return int(num + 5)
+		else:
+			print("please enter a number")
+	except ValueError as err: 
+		return err  
+
+
+#Exercise: random number test
+
+import random
+
+def run_guess(guess, answer):
+  if 0 < guess < 10:
+     if guess == answer:
+      print("you are genius")
+      return True
+  else:
+    print("sorry")
+    return False
+
+if __name__=='__main__':
+  answer= random.randint(1, 11)
+  while True:
+    try:
+      guess = int(input("guess a number 1- 10:::: "))
+      if(run_guess(guess, answer)):
+        break
+
+    except ValueError:
+          print("please enter a number")
+          continue
+          
+          
+          
+          
+          
+          
+ #Test.py
+ 
+ 
+ import unittest
+import main
+
+class TestMain(unittest.Testcase):
+	def test_do_stuff(self):
+		test_param=10
+		result=main.do_stuff(test_param)
+		self.assertEqual(result,15)
+
+
+
+	def test_do_stuff(self):
+		test_param='auygd'
+		result=main.do_stuff(test_param)
+		self.assertEqual(result,ValueError )
+	 	#self.assertIsInstance(result,ValueError ) #is the result going to be valueError
+
+	 def test_do_stuff(self):
+		test_param=None
+		result=main.do_stuff(test_param)
+	 	self.assertIsInstance(result,"please enter a number")
+
+
+	 def test_do_stuff(self):
+		test_param=''
+		result=main.do_stuff(test_param)
+	 	self.assertIsInstance(result,"please enter a number")
+
+if __name__=="__main__":
+	unittest.main( )
+
+
+# run by: python -m unittest
+#python -m unittest -v : also get some comment
+
+
+class TestMain(unittest.Testcase):
+	def setUp(self): #allows us to run piece of code that sets up before each call of the test
+	   print("about to test function") # each function run huan aaagadi yo run huncha
+
+
+	def test_do_stuff(self):
+		test_param=10
+		result=main.do_stuff(test_param)
+		self.assertEqual(result,15)
+
+
+	 def test_do_stuff(self):
+		test_param=None
+		result=main.do_stuff(test_param)
+	 	self.assertIsInstance(result,"please enter a number")
+
+	def tearDown(self): # run after exh function
+		print("cleaning up")
+
+
+
+
+
+
+
+
+#Random number testing
+
+import unittest
+import main
+
+class TestGame(unittest.Testcase):
+  def test_input(self):
+    # answer=5
+    # guess=5
+    # result=main.run_guess(answer, guess)
+    result=main.run_guess(5,5)
+    self.assertTrue(result)
+
+
+def test_input_wrong_guess(self):
+    
+    result=main.run_guess(5,0)
+    self.assertFalse(result)
+
+def test_input_wrong_number(self):
+    
+    result=main.run_guess(5,11)
+    self.assertFalse(result)
+
+
+def test_input_string(self):
+    
+    result=main.run_guess(5,'11')
+    self.assertFalse(result)
+
+
+if __name__=='__main__':
+  unittest.main() 
+          
+          
+          
